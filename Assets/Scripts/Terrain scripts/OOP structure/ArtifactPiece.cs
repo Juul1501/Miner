@@ -9,7 +9,7 @@ public class ArtifactPiece
 
 
 
-    public ArtifactPiece artifactPiece(int ID, UnityEngine.GameObject artifactPieceObject)
+    public ArtifactPiece (int ID, UnityEngine.GameObject artifactPieceObject)
     {
         ID = this.ID;
         artifactPieceObject = this.artifactPieceObject;

@@ -11,7 +11,7 @@ public class Ground {
 
 
 
-    public Ground ground(int depthLevel, int toughNess, UnityEngine.GameObject groundObject, bool mineable)
+    public Ground (int depthLevel, int toughNess, UnityEngine.GameObject groundObject, bool mineable)
     {
         depthLevel = this.depthLevel;
         toughNess = this.toughNess;

@@ -19,11 +19,11 @@ public class ArtifactGround : Ground
 
 
 
-    public ArtifactGround artifactGround(ArtifactTier articactTier, UnityEngine.GameObject artifactObject, ArtifactPiece artifactPiece)
+    public ArtifactGround(int depthlevel,int toughNess,UnityEngine.GameObject groundObject,bool mineable, ArtifactTier artifactTier, UnityEngine.GameObject artifactObject, ArtifactPiece artifactPiece) : base(depthlevel,toughNess,groundObject,mineable)
     {
-        artifactTier = this.artifactTier;
-        artifactObject = this.artifactObject;
-        artifactPiece = this.artifactPiece;
+        this.artifactTier = artifactTier;
+        this.artifactObject = artifactObject;
+        this.artifactPiece = artifactPiece;
 
     }
 }

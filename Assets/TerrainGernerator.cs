@@ -21,7 +21,7 @@ public class TerrainGernerator : MonoBehaviour
         {
             for (int y = 0; y < terrainHeight; y++)
             {
-                generatePos = new Vector3(x, y, 0);
+                generatePos = new Vector3(x,y, 0);
                 if (Random.value < spawnPercentage)
                 {
                     Instantiate(groundObjects[1], generatePos, Quaternion.identity);
@@ -33,5 +33,10 @@ public class TerrainGernerator : MonoBehaviour
                 
             }
         }
+    }
+    void ReGenerateTerrain()
+    {
+        //terrainHeight += terrainHeight;
+        GenerateTerrain();
     }
 }
