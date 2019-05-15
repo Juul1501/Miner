@@ -9,7 +9,7 @@ public class TerrainGernerator : MonoBehaviour
     public GameObject[] groundObjects;
     public Vector3 generatePos;
 
-    
+
     private void Start()
     {
         spawnPercentage = spawnPercentage / 100f;
@@ -24,6 +24,7 @@ public class TerrainGernerator : MonoBehaviour
                 generatePos = new Vector3(x,y, 0);
                 if (Random.value < spawnPercentage)
                 {
+                   
                     Instantiate(groundObjects[1], generatePos, Quaternion.identity);
                 }
                 else

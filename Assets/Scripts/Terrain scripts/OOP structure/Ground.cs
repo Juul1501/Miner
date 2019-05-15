@@ -6,7 +6,7 @@ public class Ground {
     public int depthLevel;
     public int toughNess;
     public bool mineable;
-
+    
     public UnityEngine.GameObject groundObject;
 
 
@@ -17,8 +17,8 @@ public class Ground {
         toughNess = this.toughNess;
         groundObject = this.groundObject;
         mineable = this.mineable;
-
     }
+
 
 
 }
