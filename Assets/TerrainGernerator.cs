@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class TerrainGernerator : MonoBehaviour
 {
+     public enum BlockType{
+        GroundBlock,
+        ArtifactBlock,
+        StoneBlock,
+        HiddenArtBlock
+    };
+
     public int terrainWidth = 0, terrainHeight = 0;
     public float spawnPercentage;
     public GameObject[] groundObjects;
     public Vector3 generatePos;
 
+    public BlockType blockType;
 
     private void Start()
     {
         spawnPercentage = spawnPercentage / 100f;
         GenerateTerrain();
     }
-    void GenerateTerrain()
+    void GenerateTerrain( )
     {
         for (int x = 0; x < terrainWidth; x++)
         {
