@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GroundBlock : MonoBehaviour
 {
+    bool highlight = false;
     // Start is called before the first frame update
     void Start()
     {
