@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 3;
     public float breakTime;
 
-    public bool hasWaypoint;
+    public bool isMoving = false;
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hitInfo);
             if (hit)
             {
-                HighlightGround(hitInfo);
+               if(!isMoving) HighlightGround(hitInfo);
             }
             if(touch.phase == TouchPhase.Ended)
             {
@@ -41,12 +41,12 @@ public class PlayerController : MonoBehaviour
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
             if (hit)
             {
-                HighlightGround(hitInfo);
+              if(!isMoving)  HighlightGround(hitInfo);
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
-            StartCoroutine( MovePlayer()); 
+           if(!isMoving) StartCoroutine( MovePlayer()); 
         }
     }
 
@@ -62,19 +62,22 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator MovePlayer()
     {  
+        isMoving = true;
        float waitTime = 0.04f;
         for (int i = 0; i < waypoint.Count; i++)
             {
 
                 while (transform.position != waypoint[i])
                 {
-                    yield return new WaitForSeconds(breakTime);
                     float step = moveSpeed * waitTime;
                     transform.position = Vector3.MoveTowards(transform.position, waypoint[i], step);
                     Debug.Log(waypoint[i]);
                 }
 
+                yield return new WaitForSeconds(breakTime);
+
             }
         waypoint.Clear();
+        isMoving = false;
     }
 }
