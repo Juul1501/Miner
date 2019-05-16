@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public List<Vector3> waypoint;
+    public float moveSpeed = 3;
+    public float breakTime;
+
+    public bool hasWaypoint;
 
     void Start()
     {
@@ -13,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+
+        
 
         foreach (var touch in Input.touches)
         {
@@ -39,8 +46,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            MovePlayer();
-            //waypoint.Clear();
+            StartCoroutine( MovePlayer()); 
         }
     }
 
@@ -54,8 +60,21 @@ public class PlayerController : MonoBehaviour
             waypoint.Add(hitInfo.transform.position);
         }
     }
-    void MovePlayer()
-    {
+    IEnumerator MovePlayer()
+    {  
+       float waitTime = 0.04f;
+        for (int i = 0; i < waypoint.Count; i++)
+            {
 
+                while (transform.position != waypoint[i])
+                {
+                    yield return new WaitForSeconds(breakTime);
+                    float step = moveSpeed * waitTime;
+                    transform.position = Vector3.MoveTowards(transform.position, waypoint[i], step);
+                    Debug.Log(waypoint[i]);
+                }
+
+            }
+        waypoint.Clear();
     }
 }
