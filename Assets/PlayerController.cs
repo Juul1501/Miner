@@ -10,8 +10,11 @@ public class PlayerController : MonoBehaviour
 
     public bool isMoving = false;
 
+    GameObject hitObject;
+    GameObject lastHitObject;
     void Start()
     {
+        lastHitObject = this.gameObject;
         waypoint = new List<Vector3>();
     }
 
@@ -46,23 +49,31 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-           if(!isMoving) StartCoroutine( MovePlayer()); 
+           if(!isMoving) StartCoroutine(MovePlayer()); 
         }
     }
 
     void HighlightGround(RaycastHit hitInfo)
     {
-        if (!hitInfo.transform.gameObject.GetComponent<GroundBlock>().highlight)
+        hitObject = hitInfo.transform.gameObject;
+        if (!hitObject.GetComponent<GroundBlock>().highlight)
         {
-            hitInfo.transform.gameObject.GetComponent<GroundBlock>().highlight = true;
-            Debug.Log("Hit " + hitInfo.transform.gameObject.name);
-            hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
-            waypoint.Add(hitInfo.transform.position);
+
+            if (hitObject.transform.position.y ==  lastHitObject.transform.position.y -1 || hitObject.transform.position.y == lastHitObject.transform.position.y)
+            {
+                if (hitObject.transform.position.x - 1 == lastHitObject.transform.position.x || hitObject.transform.position.x + 1 == lastHitObject.transform.position.x || hitObject.transform.position.x == lastHitObject.transform.position.x)
+                {
+                    hitObject.GetComponent<GroundBlock>().highlight = true;
+                    hitObject.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
+                    waypoint.Add(hitInfo.transform.position);
+                    lastHitObject = hitObject;
+                }
+            }
         }
     }
     IEnumerator MovePlayer()
     {  
-        isMoving = true;
+       isMoving = true;
        float waitTime = 0.04f;
         for (int i = 0; i < waypoint.Count; i++)
             {
@@ -71,7 +82,6 @@ public class PlayerController : MonoBehaviour
                 {
                     float step = moveSpeed * waitTime;
                     transform.position = Vector3.MoveTowards(transform.position, waypoint[i], step);
-                    Debug.Log(waypoint[i]);
                 }
 
                 yield return new WaitForSeconds(breakTime);
