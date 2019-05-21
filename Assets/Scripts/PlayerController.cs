@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     Vector3 downMove = new Vector3(0, -1, 0);
     GameObject hitObject;
     GameObject lastHitObject;
+    public int highlightAmount;
     void Start()
     {
         lastHitObject = this.gameObject;
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
     void HighlightGround(RaycastHit hitInfo)
     {
         hitObject = hitInfo.transform.gameObject;
-        if (!hitObject.GetComponent<GroundBlock>().highlight)
+        if (!hitObject.GetComponent<GroundBlock>().highlight && waypoint.Count < highlightAmount) 
         {
             Vector3 lastPos = lastHitObject.transform.position;
             Vector3 hitPos = hitObject.transform.position;
