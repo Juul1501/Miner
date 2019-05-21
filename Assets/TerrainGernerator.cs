@@ -29,7 +29,7 @@ public class TerrainGernerator : MonoBehaviour
         {
             for (int y = 0; y < terrainHeight; y++)
             {
-                generatePos = new Vector3(x,y, 0);
+                generatePos = new Vector3(x,-y, 0);
                 if (Random.value < spawnPercentage)
                 {
                    
