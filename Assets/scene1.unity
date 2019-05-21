@@ -409,7 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoint: []
   moveSpeed: 2
-  breakTime: 0.0006
+  breakTime: 0.00005
   isMoving: 0
 --- !u!1 &1704395890
 GameObject:
