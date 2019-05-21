@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
         hitObject = hitInfo.transform.gameObject;
         if (!hitObject.GetComponent<GroundBlock>().highlight)
         {
-
             if (hitObject.transform.position.y ==  lastHitObject.transform.position.y -1 || hitObject.transform.position.y == lastHitObject.transform.position.y)
             {
                 if (hitObject.transform.position.x - 1 == lastHitObject.transform.position.x || hitObject.transform.position.x + 1 == lastHitObject.transform.position.x || hitObject.transform.position.x == lastHitObject.transform.position.x)
