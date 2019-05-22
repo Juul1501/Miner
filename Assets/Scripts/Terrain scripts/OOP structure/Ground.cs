@@ -6,6 +6,8 @@ public class Ground {
     public int depthLevel;
     public int toughNess;
     public bool mineable;
+
+    public Vector2Int position;
     
     public UnityEngine.GameObject groundObject;
 

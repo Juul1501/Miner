@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class ArtifactGround : Ground
 {
-    public enum ArtifactTier
-    {
-        Common,
-        Uncommon,
-        Rare,
-        Epic,
-        Legendary
-    };
-
+    
     public ArtifactTier artifactTier;
     public UnityEngine.GameObject artifactObject;
     public ArtifactPiece artifactPiece;
