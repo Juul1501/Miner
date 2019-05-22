@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &210219392
 Animator:
   serializedVersion: 3
@@ -205,11 +205,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210219391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
-  m_LocalScale: {x: 1.09, y: 1.09, z: 1.09}
+  m_LocalPosition: {x: 0, y: 0.72, z: -2}
+  m_LocalScale: {x: 0.18348625, y: 0.18348625, z: 0.18348625}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 929618360}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &487738632
 GameObject:
@@ -343,7 +343,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929618356}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -389,9 +389,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929618356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: -15, z: 0}
   m_LocalScale: {x: 1.09, y: 1.09, z: 1.09}
-  m_Children: []
+  m_Children:
+  - {fileID: 210219394}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -411,7 +412,7 @@ MonoBehaviour:
   moveSpeed: 2
   breakTime: 0.00005
   isMoving: 0
-  highlightAmount: 5
+  highlightAmount: 0
 --- !u!1 &1704395890
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,11 +513,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainWidth: 10
   terrainHeight: 200
-  spawnPercentage: 10
+  spawnPercentage: 2
   groundObjects:
   - {fileID: 1152057495192666260, guid: 483fd9562c1d3ba47aa95341299eacf3, type: 3}
   - {fileID: 1152057495192666260, guid: 51ed0ef8a86428d458b2672348926873, type: 3}
   generatePos: {x: 0, y: 0, z: 0}
+  TotalDepth: 0
   blockType: 0
 --- !u!4 &1831617493
 Transform:
