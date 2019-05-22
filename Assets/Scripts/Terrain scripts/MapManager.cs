@@ -37,7 +37,8 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        
+        map1 = new Map();
+        map1.GenerateMap();
     }
 
     // Update is called once per frame

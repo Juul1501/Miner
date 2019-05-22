@@ -10,3 +10,10 @@ public enum ArtifactTier
         Epic,
         Legendary
     };
+public enum BlockType
+{
+    GroundBlock,
+    ArtifactBlock,
+    StoneBlock,
+    HiddenArtBlock
+};

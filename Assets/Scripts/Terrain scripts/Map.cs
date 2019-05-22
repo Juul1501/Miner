@@ -4,44 +4,30 @@ using UnityEngine;
 
 public class Map
 {
-     public enum BlockType{
-        GroundBlock,
-        ArtifactBlock,
-        StoneBlock,
-        HiddenArtBlock
-    };
-
-    public int terrainWidth = 0, terrainHeight = 0;
-    public float spawnPercentage;
-    //public GameObject[] groundObjects;
+    public int terrainWidth = 10, terrainHeight = 100;
+    public float spawnPercentage = 0.05f;
 
     public Ground[,] ground;
     public Vector3Int generatePos;
 
-
-    private void Start()
+    public void GenerateMap()
     {
-        spawnPercentage = spawnPercentage / 100f;
-        GenerateMap();
-    }
-    void GenerateMap()
-    {
+        ground = new Ground[terrainWidth, terrainHeight];
         for (int y = 0; y < terrainHeight; y++)
         {
             for (int x = 0; x < terrainWidth; x++ )
             {
-                generatePos = new Vector3Int(x,-y, 0);
                 if (Random.value < spawnPercentage)
                 {
-                   
-
-                   // Instantiate(groundObjects[1], generatePos, Quaternion.identity);
+                    ground[y, x] = new ArtifactGround(1, 1, MapManager.Instance.groundPrefabs[0], true,ArtifactTier.Common,MapManager.Instance.artifactPrefabs[0], new Vector2Int(x,y));
+                    generatePos = new Vector3Int(ground[y, x].position.x, ground[y, x].position.y,0);
+                    MonoBehaviour.Instantiate(ground[y, x].groundObject,generatePos, Quaternion.identity);
                 }
                 else
                 {
-                    ground[y,x] = new Ground(1,1,MapManager.Instance.prefabs[0],true);
-                    UnityEngine.Transform.Instantiate(ground[y,x].groundObject,generatePos,Quaternion.identity);
-                   // Instantiate(groundObjects[0], generatePos, Quaternion.identity);
+                    ground[y,x] = new Ground(1,1,MapManager.Instance.groundPrefabs[0],true,new Vector2Int(x,y));
+                    generatePos = new Vector3Int(ground[y, x].position.x, ground[y, x].position.y, 0);
+                    MonoBehaviour.Instantiate(ground[y, x].groundObject, generatePos, Quaternion.identity);
                 }
                 
             }
@@ -57,7 +43,6 @@ public class Map
     void SetGround (int x, int y, Ground stGround)
     {
         ground[x,y] = stGround;
-
     }
     
 

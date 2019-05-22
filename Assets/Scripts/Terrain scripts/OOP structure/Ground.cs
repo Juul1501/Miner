@@ -13,12 +13,13 @@ public class Ground {
 
 
 
-    public Ground (int depthLevel, int toughNess, UnityEngine.GameObject groundObject, bool mineable)
+    public Ground (int depthLevel, int toughNess, UnityEngine.GameObject groundObject, bool mineable, Vector2Int position)
     {
         depthLevel = this.depthLevel;
         toughNess = this.toughNess;
         groundObject = this.groundObject;
         mineable = this.mineable;
+        position = this.position;
     }
 
 
