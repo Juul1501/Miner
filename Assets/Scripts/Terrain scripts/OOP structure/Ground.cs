@@ -15,14 +15,10 @@ public class Ground {
 
     public Ground (int depthLevel, int toughNess, GameObject groundObject, bool mineable, Vector2Int position)
     {
-        depthLevel = this.depthLevel;
-        toughNess = this.toughNess;
-        groundObject = this.groundObject;
-        Debug.Log(groundObject);
-        mineable = this.mineable;
-        position = this.position;
+        this.depthLevel = depthLevel;
+        this.toughNess = toughNess;
+        this.groundObject = groundObject;
+        this.mineable = mineable;
+        this.position = position;
     }
-
-
-
 }

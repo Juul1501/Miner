@@ -52,17 +52,22 @@ public class PlayerController : MonoBehaviour
 
     void HighlightGround(RaycastHit hitInfo)
     {
-        hitObject = hitInfo.transform.gameObject;
-        if (!hitObject.GetComponent<GroundBlock>().highlight && waypoint.Count < highlightAmount) 
+        if (waypoint.Count < highlightAmount) 
         {
-            Vector3 lastPos = lastHitObject.transform.position;
-            Vector3 hitPos = hitObject.transform.position;
-            if (lastPos + downMove == hitPos || lastPos + leftMove == hitPos || lastPos + rightMove == hitPos)
+            hitObject = hitInfo.transform.gameObject;
+            //Debug.Log(hitObject.transform.position.y);
+            Ground ground = MapManager.Instance.map1.GetGround(Mathf.RoundToInt(hitObject.transform.position.x), Mathf.RoundToInt(hitObject.transform.position.y));
+            
+            if (ground.mineable)
             {
-                hitObject.GetComponent<GroundBlock>().highlight = true;
-                hitObject.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
-                waypoint.Add(hitInfo.transform.position);
-                lastHitObject = hitObject;
+                Vector3 lastPos = lastHitObject.transform.position;
+                Vector3 hitPos = hitObject.transform.position;
+                if (lastPos + downMove == hitPos || lastPos + leftMove == hitPos || lastPos + rightMove == hitPos)
+                {  
+                    hitObject.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
+                    waypoint.Add(hitInfo.transform.position);
+                    lastHitObject = hitObject;
+                }
             }
         }
     }
@@ -73,12 +78,13 @@ public class PlayerController : MonoBehaviour
        float waitTime = 0.04f;
         for (int i = 0; i < waypoint.Count; i++)
             {
+                Ground ground = MapManager.Instance.map1.GetGround(Mathf.RoundToInt(waypoint[i].x), Mathf.RoundToInt(waypoint[i].y));
                 while (transform.position != waypoint[i])
                 {
                     float step = moveSpeed * waitTime;
                     transform.position = Vector3.MoveTowards(transform.position, waypoint[i], step);
                 }
-                yield return new WaitForSeconds(breakTime);
+                yield return new WaitForSeconds(ground.toughNess);
             }
         waypoint.Clear();
         isMoving = false;

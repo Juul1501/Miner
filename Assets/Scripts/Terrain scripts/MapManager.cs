@@ -37,14 +37,21 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(instance.groundPrefabs[0]);
         map1 = new Map();
         map1.GenerateMap();
+        InstantiateMap(map1);
     }
 
-    // Update is called once per frame
-    void Update()
+    void InstantiateMap(Map map)
     {
+        GameObject parent = new GameObject("Map");
         
+        for (int y = 0; y < map.terrainHeight; y++)
+        {
+            for (int x = 0; x < map.terrainWidth; x++)
+            {
+                Instantiate(map.ground[x, y].groundObject,new Vector3Int(map.ground[x, y].position.x, map.ground[x, y].position.y,0),Quaternion.identity,parent.transform);
+            }
+        }
     }
 }

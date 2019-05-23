@@ -19,32 +19,24 @@ public class Map
             {
                 if (Random.value < spawnPercentage)
                 {
-                    ground[y, x] = new ArtifactGround(1, 1, MapManager.Instance.groundPrefabs[0], true,ArtifactTier.Common,MapManager.Instance.artifactPrefabs[0], new Vector2Int(x,y));
-                    generatePos = new Vector3Int(ground[y, x].position.x, ground[y, x].position.y,0);
-                    MonoBehaviour.Instantiate(ground[y, x].groundObject,generatePos, Quaternion.identity);
+                    ground[x, y] = new ArtifactGround(1, 1, MapManager.Instance.groundPrefabs[1], true,ArtifactTier.Common,MapManager.Instance.artifactPrefabs[0], new Vector2Int(x,-y));
                 }
                 else
                 {
-                    Debug.Log(MapManager.Instance.groundPrefabs[0].name);
-                    var i = MapManager.Instance.groundPrefabs[0];
-                    ground[y,x] = new Ground(1,1,i,true,new Vector2Int(x,y));
-                    generatePos = new Vector3Int(ground[y, x].position.x, ground[y, x].position.y, 0);
-                    Debug.Log(i.tag);
-                    var j = ground[y, x].groundObject;
-                    Object.Instantiate(j, generatePos, Quaternion.identity);
+                    ground[x, y] = new Ground(1, 1, MapManager.Instance.groundPrefabs[0], true, new Vector2Int(x, -y));
                 }
                 
             }
         }
     }
     
-    Ground GetGround (int x, int y) 
+    public Ground GetGround (int x, int y) 
     {
-       Ground tile = ground[x,y];   
+       Ground tile = ground[x,-y];
        return tile;
     }
 
-    void SetGround (int x, int y, Ground stGround)
+    public void SetGround (int x, int y, Ground stGround)
     {
         ground[x,y] = stGround;
     }
