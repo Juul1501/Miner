@@ -6,7 +6,6 @@ public class Map
 {
     public int terrainWidth = 10, terrainHeight = 100;
     public float spawnPercentage = 0.05f;
-
     public Ground[,] ground;
     public Vector3Int generatePos;
 
