@@ -24,9 +24,13 @@ public class Map
                 }
                 else
                 {
-                    ground[y,x] = new Ground(1,1,MapManager.Instance.groundPrefabs[0],true,new Vector2Int(x,y));
+                    Debug.Log(MapManager.Instance.groundPrefabs[0].name);
+                    var i = MapManager.Instance.groundPrefabs[0];
+                    ground[y,x] = new Ground(1,1,i,true,new Vector2Int(x,y));
                     generatePos = new Vector3Int(ground[y, x].position.x, ground[y, x].position.y, 0);
-                    MonoBehaviour.Instantiate(ground[y, x].groundObject, generatePos, Quaternion.identity);
+                    Debug.Log(i.tag);
+                    var j = ground[y, x].groundObject;
+                    Object.Instantiate(j, generatePos, Quaternion.identity);
                 }
                 
             }

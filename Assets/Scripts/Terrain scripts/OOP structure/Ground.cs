@@ -9,15 +9,16 @@ public class Ground {
 
     public Vector2Int position;
     
-    public UnityEngine.GameObject groundObject;
+    public GameObject groundObject;
 
 
 
-    public Ground (int depthLevel, int toughNess, UnityEngine.GameObject groundObject, bool mineable, Vector2Int position)
+    public Ground (int depthLevel, int toughNess, GameObject groundObject, bool mineable, Vector2Int position)
     {
         depthLevel = this.depthLevel;
         toughNess = this.toughNess;
         groundObject = this.groundObject;
+        Debug.Log(groundObject);
         mineable = this.mineable;
         position = this.position;
     }
