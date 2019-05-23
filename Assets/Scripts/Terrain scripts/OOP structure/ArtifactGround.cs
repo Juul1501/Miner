@@ -14,6 +14,5 @@ public class ArtifactGround : Ground
     {
         this.artifactTier = artifactTier;
         this.artifactObject = artifactObject;
-
     }
 }

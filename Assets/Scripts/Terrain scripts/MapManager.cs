@@ -37,6 +37,7 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(instance.groundPrefabs[0]);
         map1 = new Map();
         map1.GenerateMap();
     }
