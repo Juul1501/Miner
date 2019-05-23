@@ -9,8 +9,7 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
 
     public List<Item> items;
-    public float maximumWeight = 10.0f;
-    public float totalWeight;
+
 
     void Awake()
     {
@@ -27,19 +26,9 @@ public class Inventory : MonoBehaviour
         items = new List<Item>();
     }
 
-    public bool AddItem(Item item)
+    public void AddItem(Item item)
     {
-        if (totalWeight + item.weight > maximumWeight)
-        {
-            return false;
-        }
-        else
-        {
-            items.Add(item);
-           // InventoryUI.instance.Add(item);
-            totalWeight += item.weight;
-            return true;
-        }
+        items.Add(item);
     }
 
     public void removeItem(Item item)
@@ -47,7 +36,6 @@ public class Inventory : MonoBehaviour
         if (items.Remove(item))
         {
            // InventoryUI.instance.Remove(item);
-            totalWeight -= item.weight;
         }
     }
 
