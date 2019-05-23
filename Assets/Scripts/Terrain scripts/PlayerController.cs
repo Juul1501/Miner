@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
                     hitObject.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
                     waypoint.Add(hitInfo.transform.position);
                     lastHitObject = hitObject;
+                    
                 }
             }
         }
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour
                     transform.position = Vector3.MoveTowards(transform.position, waypoint[i], step);
                 }
                 yield return new WaitForSeconds(ground.toughNess);
+                
             }
         waypoint.Clear();
         isMoving = false;

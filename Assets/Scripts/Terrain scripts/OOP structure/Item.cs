@@ -5,12 +5,10 @@ using UnityEngine;
 public abstract class Item
 {
     public string name;
-    public float weight;
 
-    public Item(string name, float weight)
+    public Item(string name)
     {
         this.name = name;
-        this.weight = weight;
     }
 }
 

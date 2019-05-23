@@ -12,13 +12,14 @@ public class Map
     public void GenerateMap()
     {
         ground = new Ground[terrainWidth, terrainHeight];
+        ArtifactPiece artifactItem = new ArtifactPiece("test", 2,2);
         for (int y = 0; y < terrainHeight; y++)
         {
             for (int x = 0; x < terrainWidth; x++ )
             {
                 if (Random.value < spawnPercentage)
                 {
-                    ground[x, y] = new ArtifactGround(1, 1, MapManager.Instance.groundPrefabs[1], true,ArtifactTier.Common,MapManager.Instance.artifactPrefabs[0], new Vector2Int(x,-y));
+                    ground[x, y] = new ArtifactGround(1, 1, MapManager.Instance.groundPrefabs[1], true,ArtifactTier.Common,MapManager.Instance.artifactPrefabs[0], new Vector2Int(x,-y), artifactItem);
                 }
                 else
                 {
