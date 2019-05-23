@@ -11,6 +11,7 @@ public class MapManager : MonoBehaviour
     public GameObject[] groundPrefabs;
     public GameObject[] artifactPrefabs;
 
+    public int terrainWidth, terrainHeight;
 
     private static MapManager instance = null;
      
@@ -40,6 +41,16 @@ public class MapManager : MonoBehaviour
         map1 = new Map();
         map1.GenerateMap();
     }
+
+    public Ground WorldPositionToTile(Vector3 worldPos, Map currentMap)
+    {
+       int xInt = Mathf.RoundToInt(worldPos.x);
+       int yInt = Mathf.RoundToInt(worldPos.y);
+       Ground groundTile = currentMap.ground[xInt, yInt];
+       return groundTile;
+
+    }
+
 
     // Update is called once per frame
     void Update()
