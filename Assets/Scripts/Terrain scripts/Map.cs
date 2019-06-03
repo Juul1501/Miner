@@ -23,7 +23,7 @@ public class Map
                 }
                 else
                 {
-                    ground[x, y] = new Ground(1, 1, MapManager.Instance.groundPrefabs[0], true, new Vector2Int(x, -y));
+                    ground[x, y] = new Ground(1, 1, MapManager.Instance.groundPrefabs[0], true, new Vector2Int(x, -y),GroundType.ground);
                 }
                 
             }
