@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArtifactPiece
+public class ArtifactPiece : Item
 {
     public int ID;
-    public UnityEngine.GameObject artifactPieceObject;
 
 
-
-    public ArtifactPiece (int ID, GameObject artifactPieceObject)
+    public ArtifactPiece (string name, int weight, int ID) : base(name)
     {
         this.ID = ID;
-        this.artifactPieceObject = artifactPieceObject;
     }
 }
 

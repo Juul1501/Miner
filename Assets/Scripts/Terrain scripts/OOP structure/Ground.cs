@@ -11,14 +11,17 @@ public class Ground {
     
     public GameObject groundObject;
 
+    public GroundType mytype;
 
-
-    public Ground (int depthLevel, int toughNess, GameObject groundObject, bool mineable, Vector2Int position)
+    public Ground (int depthLevel, int toughNess, GameObject groundObject, bool mineable, Vector2Int position, GroundType mytype)
     {
         this.depthLevel = depthLevel;
         this.toughNess = toughNess;
         this.groundObject = groundObject;
         this.mineable = mineable;
         this.position = position;
+        this.mytype = GroundType.ground;
     }
+
+
 }

@@ -17,3 +17,9 @@ public enum BlockType
     StoneBlock,
     HiddenArtBlock
 };
+
+public enum GroundType{
+        ground,
+        artifactGround
+
+    };
