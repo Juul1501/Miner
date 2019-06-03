@@ -32,8 +32,7 @@ public class TerrainGernerator : MonoBehaviour
             {
                 generatePos = new Vector3(x,-y + TotalDepth, 0);
                 if (Random.value < spawnPercentage)
-                {
-                   
+                {  
                     Instantiate(groundObjects[1], generatePos, Quaternion.identity);
                 }
                 else
