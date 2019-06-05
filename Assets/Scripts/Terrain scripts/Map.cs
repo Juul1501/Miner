@@ -7,12 +7,14 @@ public class Map
     public int terrainWidth = 10, terrainHeight = 100;
     public float spawnPercentage = 0.05f;
     public Ground[,] ground;
+    public GameObject[,] groundGameObjects;
     public Vector3Int generatePos;
 
     public void GenerateMap()
     {
         ground = new Ground[terrainWidth, terrainHeight];
-        ArtifactPiece artifactItem = new ArtifactPiece("test", 2,2);
+        groundGameObjects = new GameObject[terrainWidth,terrainHeight];
+    ArtifactPiece artifactItem = new ArtifactPiece("test", 2,2);
         for (int y = 0; y < terrainHeight; y++)
         {
             for (int x = 0; x < terrainWidth; x++ )
@@ -40,7 +42,5 @@ public class Map
     {
         ground[x,y] = stGround;
     }
-    
-
 }
 

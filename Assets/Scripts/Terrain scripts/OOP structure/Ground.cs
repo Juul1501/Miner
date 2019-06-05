@@ -23,5 +23,10 @@ public class Ground {
         this.mytype = GroundType.ground;
     }
 
+    public Vector2Int GetPosition()
+    {
+        return position;
+    }
+
 
 }

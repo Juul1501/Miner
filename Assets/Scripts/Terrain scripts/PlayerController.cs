@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -78,16 +79,18 @@ public class PlayerController : MonoBehaviour
        isMoving = true;
        float waitTime = 0.04f;
         for (int i = 0; i < waypoint.Count; i++)
+        {
+            Ground ground = MapManager.Instance.map1.GetGround(Mathf.RoundToInt(waypoint[i].x), Mathf.RoundToInt(waypoint[i].y));
+            while (transform.position != waypoint[i])
             {
-                Ground ground = MapManager.Instance.map1.GetGround(Mathf.RoundToInt(waypoint[i].x), Mathf.RoundToInt(waypoint[i].y));
-                while (transform.position != waypoint[i])
-                {
-                    float step = moveSpeed * waitTime;
-                    transform.position = Vector3.MoveTowards(transform.position, waypoint[i], step);
-                }
-                yield return new WaitForSeconds(ground.toughNess);
-                
+                float step = moveSpeed * waitTime;
+                transform.position = Vector3.MoveTowards(transform.position, waypoint[i], step);
             }
+            //fix this this is ugly af!
+            MapManager.Instance.map1.groundGameObjects[Mathf.RoundToInt(waypoint[i].x), -Mathf.RoundToInt(waypoint[i].y)].SetActive(false);
+            //fix one line up
+            yield return new WaitForSeconds(ground.toughNess);
+        }
         waypoint.Clear();
         isMoving = false;
     }
