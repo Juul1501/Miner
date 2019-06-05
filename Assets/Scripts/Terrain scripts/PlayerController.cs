@@ -78,16 +78,18 @@ public class PlayerController : MonoBehaviour
        isMoving = true;
        float waitTime = 0.04f;
         for (int i = 0; i < waypoint.Count; i++)
+        {
+            Ground ground = MapManager.Instance.map1.GetGround(Mathf.RoundToInt(waypoint[i].x), Mathf.RoundToInt(waypoint[i].y));
+            while (transform.position != waypoint[i])
             {
-                Ground ground = MapManager.Instance.map1.GetGround(Mathf.RoundToInt(waypoint[i].x), Mathf.RoundToInt(waypoint[i].y));
-                while (transform.position != waypoint[i])
-                {
-                    float step = moveSpeed * waitTime;
-                    transform.position = Vector3.MoveTowards(transform.position, waypoint[i], step);
-                }
-                yield return new WaitForSeconds(ground.toughNess);
                 
+                transform.position = Vector3.MoveTowards(transform.position, waypoint[i], 0.01f);
+                transform.LookAt(waypoint[i], new Vector3(0f,0f,1f));
+                yield return null;
             }
+            
+            yield return new WaitForSeconds(breakTime);
+        }
         waypoint.Clear();
         isMoving = false;
     }
