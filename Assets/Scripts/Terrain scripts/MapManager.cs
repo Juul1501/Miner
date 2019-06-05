@@ -13,7 +13,6 @@ public class MapManager : MonoBehaviour
 
     private static MapManager instance = null;
      
-     // Game Instance Singleton
     public static MapManager Instance
     {
         get
@@ -24,7 +23,6 @@ public class MapManager : MonoBehaviour
      
     private void Awake()
     {
-        // if the singleton hasn't been initialized yet
         if (instance != null && instance != this) 
         {
             Destroy(this.gameObject);
@@ -57,9 +55,8 @@ public class MapManager : MonoBehaviour
                 Material groundTile = new Material(Shader.Find("Standard"));
                 texture = Resources.Load<Texture2D>("R"+(r).ToString()+" T"+(x + 1).ToString());
                 groundTile.SetTexture("_MainTex", texture);
-                map.ground[x, y].groundObject.GetComponent<MeshRenderer>().material = groundTile;
-                Instantiate(map.ground[x, y].groundObject,new Vector3Int(map.ground[x, y].position.x, map.ground[x, y].position.y,0),new Quaternion (0,0,90,0),parent.transform);
-
+                map1.ground[x, y].groundObject.GetComponent<MeshRenderer>().material = groundTile;
+                map1.groundGameObjects[x,y] = Instantiate(map.ground[x, y].groundObject,new Vector3Int(map.ground[x, y].position.x, map.ground[x, y].position.y,0),new Quaternion (0,0,90,0),parent.transform) as GameObject;
             }
         }
     }

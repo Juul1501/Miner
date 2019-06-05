@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour
                 transform.LookAt(waypoint[i], new Vector3(0f,0f,1f));
                 yield return null;
             }
-            
+            MapManager.Instance.map1.groundGameObjects[Mathf.RoundToInt(waypoint[i].x), -Mathf.RoundToInt(waypoint[i].y)].SetActive(false);
             yield return new WaitForSeconds(breakTime);
         }
         waypoint.Clear();
