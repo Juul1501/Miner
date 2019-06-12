@@ -7,7 +7,7 @@ public class ArtifactGround : Ground
     
     public ArtifactTier artifactTier;
     public UnityEngine.GameObject artifactSprite;
-    public Item artifactItem;
+    public Item artifactPiece;
 
 
 
@@ -15,6 +15,6 @@ public class ArtifactGround : Ground
     {
         this.artifactTier = artifactTier;
         this.artifactSprite = artifactObject;
-        this.artifactItem = artifactItem;
+        this.artifactPiece = artifactItem;
     }
 }

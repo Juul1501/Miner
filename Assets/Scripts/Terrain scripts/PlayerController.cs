@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(hitObject.transform.position.y);
             Ground ground = MapManager.Instance.map1.GetGround(Mathf.RoundToInt(hitObject.transform.position.x), Mathf.RoundToInt(hitObject.transform.position.y));
             
-            if (ground.mineable)
+            if (ground != null && ground.mineable)
             {
                 Vector3 lastPos = lastHitObject.transform.position;
                 Vector3 hitPos = hitObject.transform.position;
@@ -93,9 +93,10 @@ public class PlayerController : MonoBehaviour
             if (ground is ArtifactGround)
             {
                 ArtifactGround it = (ArtifactGround) ground;
-                Inventory.instance.AddItem(it.artifactItem);
+                Inventory.instance.AddItem(it.artifactPiece);
+                
             }
-            
+
             MapManager.Instance.map1.groundGameObjects[Mathf.RoundToInt(waypoint[i].x), -Mathf.RoundToInt(waypoint[i].y)].SetActive(false);
             yield return new WaitForSeconds(breakTime);
         }

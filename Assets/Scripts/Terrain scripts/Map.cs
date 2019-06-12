@@ -14,7 +14,7 @@ public class Map
     {
         ground = new Ground[terrainWidth, terrainHeight];
         groundGameObjects = new GameObject[terrainWidth,terrainHeight];
-    ArtifactPiece artifactItem = new ArtifactPiece("test", 2,2);
+        ArtifactPiece artifactItem = new ArtifactPiece("test", 2,2);
         for (int y = 0; y < terrainHeight; y++)
         {
             for (int x = 0; x < terrainWidth; x++ )
@@ -34,8 +34,15 @@ public class Map
     
     public Ground GetGround (int x, int y) 
     {
-       Ground tile = ground[x,-y];
-       return tile;
+        if(-y > 0 && -y < ground.GetLength(1))
+        {
+            Ground tile = ground[x,-y];
+            return tile;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public void SetGround (int x, int y, Ground stGround)

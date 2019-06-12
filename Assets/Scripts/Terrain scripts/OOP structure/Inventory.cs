@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
 
     public List<Item> items;
-
+    
 
     void Awake()
     {
@@ -29,6 +29,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(Item item)
     {
         items.Add(item);
+        Debug.Log(item);
     }
 
     public void removeItem(Item item)
