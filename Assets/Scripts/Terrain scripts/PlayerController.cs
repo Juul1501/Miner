@@ -2,12 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public List<Vector3> waypoint;
     public float moveSpeed = 3;
     public float breakTime;
+
+    public float currentFuel;
+    public float maxFuel;
+    public float fuelDecreaseSpeed;
+    public Slider fuelBar;
+
     public bool isMoving = false;
     Vector3 leftMove = new Vector3(-1, 0, 0);
     Vector3 rightMove = new Vector3(1, 0, 0);
@@ -17,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public int highlightAmount;
     void Start()
     {
+        currentFuel = maxFuel;
+        fuelBar.maxValue = maxFuel;
         lastHitObject = this.gameObject;
         waypoint = new List<Vector3>();
         transform.rotation = Quaternion.Euler(90,0,0);
@@ -24,6 +33,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        DecreaseFuel();
+
         foreach (var touch in Input.touches)
         {
             RaycastHit hitInfo = new RaycastHit();
@@ -54,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     void HighlightGround(RaycastHit hitInfo)
     {
-        if (waypoint.Count < highlightAmount) 
+        if (waypoint.Count < highlightAmount && currentFuel > 0) 
         {
             hitObject = hitInfo.transform.gameObject;
             //Debug.Log(hitObject.transform.position.y);
@@ -77,6 +89,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MovePlayer()
     {  
+    if (currentFuel > 0){
+
        isMoving = true;
        float waitTime = 0.04f;
         for (int i = 0; i < waypoint.Count; i++)
@@ -102,6 +116,27 @@ public class PlayerController : MonoBehaviour
         }
         waypoint.Clear();
         isMoving = false;
+    }
+    }
+
+    public void DecreaseFuel ()
+    {
+       if(!isMoving) 
+       {
+           currentFuel = currentFuel - (1.5f * Time.deltaTime);
+       } 
+       else
+       {
+           currentFuel = currentFuel - (fuelDecreaseSpeed * Time.deltaTime);
+
+       }
+
+       if (currentFuel < 20)
+       {
+           //low on fuel message
+       }
+
+       fuelBar.value = currentFuel;
     }
 
 }
