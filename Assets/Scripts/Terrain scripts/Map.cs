@@ -9,9 +9,15 @@ public class Map
     public Ground[,] ground;
     public GameObject[,] groundGameObjects;
     public Vector3Int generatePos;
-
+    public Queue<GameObject> artifacts;
     public void GenerateMap()
     {
+         GameObject[] artifacts = Resources.LoadAll<GameObject>("Artifacts /");
+        foreach (var artifact in artifacts)
+        {
+            Debug.Log("adding artifact");
+            this.artifacts.Enqueue(artifact);
+        }
         ground = new Ground[terrainWidth, terrainHeight];
         groundGameObjects = new GameObject[terrainWidth,terrainHeight];
         ArtifactPiece artifactItem = new ArtifactPiece("test", 2,2);

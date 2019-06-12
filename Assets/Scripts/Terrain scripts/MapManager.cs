@@ -63,7 +63,7 @@ public class MapManager : MonoBehaviour
 
                 if (map.ground[x, y] is ArtifactGround)
                 {
-                    Instantiate(tempArtifact, new Vector3(map.ground[x, y].position.x, map.ground[x, y].position.y, -0.7f), Quaternion.identity);
+                    Instantiate(tempArtifact, new Vector3(map.ground[x, y].position.x, map.ground[x, y].position.y, -0.7f), Quaternion.identity,map.groundGameObjects[x,y].transform);
                 }
             }
         }
