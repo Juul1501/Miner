@@ -14,6 +14,7 @@ public class TerrainGernerator : MonoBehaviour
     public int terrainWidth = 0, terrainHeight = 0;
     public float spawnPercentage;
     public GameObject[] groundObjects;
+    public GameObject artifactGameObject;
     public Vector3 generatePos;
     public float TotalDepth;
     public BlockType blockType;
@@ -38,6 +39,7 @@ public class TerrainGernerator : MonoBehaviour
                 else
                 {
                     Instantiate(groundObjects[0], generatePos, Quaternion.identity);
+                    Instantiate(artifactGameObject, new Vector3 (generatePos.x, generatePos.y, generatePos.z + 0.1f), Quaternion.identity);
                 }  
             }
         }
