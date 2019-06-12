@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             while (transform.position != waypoint[i])
             {
                 
-                transform.position = Vector3.MoveTowards(transform.position, waypoint[i], 0.01f);
+                transform.position = Vector3.MoveTowards(transform.position, waypoint[i], moveSpeed);
                 transform.LookAt(waypoint[i], new Vector3(0f,0f,1f));
                 yield return null;
             }
