@@ -1210,6 +1210,57 @@ MonoBehaviour:
   artifactPrefabs:
   - {fileID: 1152057495192666260, guid: 483fd9562c1d3ba47aa95341299eacf3, type: 3}
   - {fileID: 1152057495192666260, guid: 483fd9562c1d3ba47aa95341299eacf3, type: 3}
+  artifacts:
+  - depthLevel: 0
+    toughNess: 1
+    mineable: 1
+    position: {x: 0, y: 0}
+    groundObject: {fileID: 1152057495192666260, guid: 483fd9562c1d3ba47aa95341299eacf3,
+      type: 3}
+    mytype: 1
+    artifactTier: 0
+    artifactSprite: {fileID: 4492877769113394184, guid: 02cd5217087c5cb449a61f2215f6a037,
+      type: 3}
+  - depthLevel: 0
+    toughNess: 1
+    mineable: 1
+    position: {x: 0, y: 0}
+    groundObject: {fileID: 1152057495192666260, guid: 483fd9562c1d3ba47aa95341299eacf3,
+      type: 3}
+    mytype: 1
+    artifactTier: 0
+    artifactSprite: {fileID: 8352613230936112087, guid: 2828aa41fb142a64e9bd3f9d629762d6,
+      type: 3}
+  - depthLevel: 0
+    toughNess: 1
+    mineable: 1
+    position: {x: 0, y: 0}
+    groundObject: {fileID: 1152057495192666260, guid: 483fd9562c1d3ba47aa95341299eacf3,
+      type: 3}
+    mytype: 1
+    artifactTier: 0
+    artifactSprite: {fileID: 4711794896591722819, guid: d178c877a9c22f44e9be64bbe6007580,
+      type: 3}
+  - depthLevel: 0
+    toughNess: 1
+    mineable: 1
+    position: {x: 0, y: 0}
+    groundObject: {fileID: 1152057495192666260, guid: 483fd9562c1d3ba47aa95341299eacf3,
+      type: 3}
+    mytype: 1
+    artifactTier: 0
+    artifactSprite: {fileID: 619720281303234848, guid: 84dfb2644e70fe544bb2eb1150a5116a,
+      type: 3}
+  - depthLevel: 0
+    toughNess: 1
+    mineable: 1
+    position: {x: 0, y: 0}
+    groundObject: {fileID: 1152057495192666260, guid: 483fd9562c1d3ba47aa95341299eacf3,
+      type: 3}
+    mytype: 1
+    artifactTier: 0
+    artifactSprite: {fileID: 3645401511353331589, guid: 053d1f069c5f57744a9e8d5d699e6f40,
+      type: 3}
   tempArtifact: {fileID: 7311961293818861629, guid: 2b139eded8bcaf64c9bc8624dcec73ef,
     type: 3}
 --- !u!1 &1870309624

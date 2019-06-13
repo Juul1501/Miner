@@ -10,9 +10,9 @@ public class MapManager : MonoBehaviour
     public Texture2D texture;
     public GameObject[] groundPrefabs;
     public GameObject[] artifactPrefabs;
-
+    public ArtifactGround[] artifacts;
     public GameObject tempArtifact;
-
+    int artifactNum = 0;
     private static MapManager instance = null;
 
     public static MapManager Instance
@@ -61,9 +61,10 @@ public class MapManager : MonoBehaviour
                 map1.ground[x, y].groundObject.GetComponent<MeshRenderer>().material = groundTile;
                 map1.groundGameObjects[x, y] = Instantiate(map.ground[x, y].groundObject, new Vector3Int(map.ground[x, y].position.x, map.ground[x, y].position.y, 0), new Quaternion(0, 0, 90, 0), parent.transform) as GameObject;
 
-                if (map.ground[x, y] is ArtifactGround)
+                if (map.ground[x, y] is ArtifactGround && artifactNum < artifacts.Length)
                 {
-                    Instantiate(tempArtifact, new Vector3(map.ground[x, y].position.x, map.ground[x, y].position.y, -0.7f), Quaternion.identity,map.groundGameObjects[x,y].transform);
+                    Instantiate(artifacts[artifactNum].artifactSprite, new Vector3(map.ground[x, y].position.x, map.ground[x, y].position.y, -0.7f), Quaternion.identity,map.groundGameObjects[x,y].transform);
+                    artifactNum++;
                 }
             }
         }
