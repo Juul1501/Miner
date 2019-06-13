@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     GameObject hitObject;
     GameObject lastHitObject;
     public int highlightAmount;
+    public ParticleSystem particle;
     void Start()
     {
         currentFuel = maxFuel;
@@ -88,14 +89,14 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator MovePlayer()
-    {  
+    {
     if (currentFuel > 0){
-
        isMoving = true;
        float waitTime = 0.04f;
         for (int i = 0; i < waypoint.Count; i++)
         {
-            Ground ground = MapManager.Instance.map1.GetGround(Mathf.RoundToInt(waypoint[i].x), Mathf.RoundToInt(waypoint[i].y));
+                
+                Ground ground = MapManager.Instance.map1.GetGround(Mathf.RoundToInt(waypoint[i].x), Mathf.RoundToInt(waypoint[i].y));
             while (transform.position != waypoint[i])
             {
                 
@@ -112,7 +113,8 @@ public class PlayerController : MonoBehaviour
             }
 
             MapManager.Instance.map1.groundGameObjects[Mathf.RoundToInt(waypoint[i].x), -Mathf.RoundToInt(waypoint[i].y)].SetActive(false);
-            yield return new WaitForSeconds(breakTime);
+                particle.Play();
+                yield return new WaitForSeconds(breakTime);
         }
         waypoint.Clear();
         isMoving = false;

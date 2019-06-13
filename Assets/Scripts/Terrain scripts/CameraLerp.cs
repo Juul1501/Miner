@@ -12,7 +12,7 @@ public class CameraLerp : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position =  Vector3.Lerp (this.gameObject.transform.position , new Vector3( this.gameObject.transform.position.x, followObject.transform.position.y, this.gameObject.transform.position.z), lerpSpeed); 
+        transform.position =  Vector3.Lerp (this.gameObject.transform.position , new Vector3( this.gameObject.transform.position.x, followObject.transform.position.y-4, this.gameObject.transform.position.z), lerpSpeed); 
 
     }
 }
