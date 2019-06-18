@@ -6,6 +6,7 @@ TagManager:
   tags:
   - piece
   - maxfueldots
+  - slidelengthdots
   layers:
   - Default
   - TransparentFX

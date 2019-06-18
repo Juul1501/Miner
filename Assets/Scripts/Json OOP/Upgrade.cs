@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class Upgrade
+public class Upgrade : Data
 {
     [SerializeField]
     private float _value;

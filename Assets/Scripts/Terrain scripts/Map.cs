@@ -5,7 +5,7 @@ using UnityEngine;
 public class Map
 {
     public int terrainWidth = 10, terrainHeight = 100;
-    public float spawnPercentage = 0.05f;
+    public float spawnPercentage = 0.02f;
     public Ground[,] ground;
     public GameObject[,] groundGameObjects;
     public Vector3Int generatePos;

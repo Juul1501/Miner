@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,19 +24,41 @@ public class PlayerController : MonoBehaviour
     GameObject lastHitObject;
     public int highlightAmount;
     public ParticleSystem particle;
+
+    public JsonLoader jsonLoader;
+    public Upgrades playerUpgrades;
+    public string upgradeSavepath;
     void Start()
     {
-        currentFuel = maxFuel;
-        fuelBar.maxValue = maxFuel;
+        jsonLoader = new JsonLoader();
+        initializeUpgrades();
+        
         lastHitObject = this.gameObject;
         waypoint = new List<Vector3>();
         transform.rotation = Quaternion.Euler(90,0,0);
     }
 
+
+    public void initializeUpgrades()
+    {
+        Data d = jsonLoader.LoadJson(playerUpgrades, upgradeSavepath);
+                if (d is Upgrades)
+                {
+                    playerUpgrades = (Upgrades)d;
+                }
+
+        maxFuel += playerUpgrades.MaxFuelUpgrade.Value;
+
+        currentFuel = maxFuel;
+        fuelBar.maxValue = maxFuel;
+        highlightAmount += Mathf.RoundToInt( playerUpgrades.SlideLengthUpgrade.Value);
+
+    }
+
     void Update()
     {
 
-        DecreaseFuel();
+        if(currentFuel > 0) DecreaseFuel();
 
         foreach (var touch in Input.touches)
         {
@@ -137,6 +160,7 @@ public class PlayerController : MonoBehaviour
        {
            //low on fuel message
        }
+       
 
        fuelBar.value = currentFuel;
     }

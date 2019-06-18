@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scripts/Puzzle.unity
     guid: eaf3aff5410e2984c98bbae02c9b9c4c
+  - enabled: 1
+    path: Assets/Scripts/ShopScene.unity
+    guid: 39901b5c94a35d0419eb9bf23f3672e7
+  - enabled: 1
+    path: Assets/Scripts/MainMenu.unity
+    guid: f20723d98e4bff64884f026ecc73ec51
   m_configObjects: {}

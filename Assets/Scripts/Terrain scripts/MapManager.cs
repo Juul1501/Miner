@@ -40,7 +40,6 @@ public class MapManager : MonoBehaviour
         map1 = new Map();
         map1.GenerateMap();
         InstantiateMap(map1);
-
     }
 
     void InstantiateMap(Map map)

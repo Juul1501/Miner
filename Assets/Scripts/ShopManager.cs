@@ -2,25 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShopManager : MonoBehaviour
 {
     //upgrade Indicators 
     public GameObject[] maxFuelIndicator;
+    public GameObject[] slideLengthIndicator;
 
+    public Text moneyText;
 
     public string upgradeSavepath;
     public Upgrades upgrades;
+    public object castingObject;
     public JsonLoader jsonLoader;
     
     void Awake()
     {
         
+        moneyText.text = "monni " + MoneyManager.Instance.money.Amount;
         //Instantiate or load Json File
         jsonLoader = new JsonLoader();
         if(System.IO.File.Exists(Application.persistentDataPath + upgradeSavepath)) 
         {
-            upgrades = jsonLoader.LoadJson(upgradeSavepath);
+                Data d = jsonLoader.LoadJson(upgrades, upgradeSavepath);
+                if (d is Upgrades)
+                {
+                    upgrades = (Upgrades)d;
+                }
+
         } else {
             upgrades = new Upgrades();
             jsonLoader.SaveJson(upgrades,upgradeSavepath);
@@ -31,9 +41,15 @@ public class ShopManager : MonoBehaviour
        
     }
 
-    public void OnButtonPress()
+    public void FuelButtonPress()
     {
-        buyUpgrade(upgrades.MaxFuelUpgrade, 20f, 1);
+        buyUpgrade(upgrades.MaxFuelUpgrade, 30f, 1);
+        InitiateIndicators();
+    }
+
+     public void SlideButtonPress()
+    {
+        buyUpgrade(upgrades.SlideLengthUpgrade, 1, 1);
         InitiateIndicators();
     }
     
@@ -47,8 +63,9 @@ public class ShopManager : MonoBehaviour
        }
     }
 
-    public void ClearUpgrades(){
-        jsonLoader.ClearJson(upgradeSavepath);
+    public void ResetUpgrades(){
+        jsonLoader.DeleteJson(upgradeSavepath);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void InitiateIndicators()
@@ -63,5 +80,20 @@ public class ShopManager : MonoBehaviour
                 maxFuelIndicator[i].GetComponent<Toggle>().isOn = false;
             }
         }
+
+        slideLengthIndicator = GameObject.FindGameObjectsWithTag("slidelengthdots");
+        for (int i = 0; i < slideLengthIndicator.Length; i++)
+        {
+            if(i < upgrades.SlideLengthUpgrade.level){
+                slideLengthIndicator[i].GetComponent<Toggle>().isOn = true;
+            } else {
+                slideLengthIndicator[i].GetComponent<Toggle>().isOn = false;
+            }
+        }
+    }
+
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

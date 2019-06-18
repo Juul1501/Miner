@@ -4,7 +4,7 @@ using UnityEngine;
 public class JsonLoader 
 {
 
-    public void SaveJson(Upgrades u, string filePath)
+    public void SaveJson(Data u, string filePath)
     {
         string jsonData = JsonUtility.ToJson(u, true);
         File.WriteAllText(Application.persistentDataPath + filePath, jsonData);
@@ -12,20 +12,18 @@ public class JsonLoader
         Debug.Log("Saved json");
     }
 
-    public Upgrades LoadJson(string filePath)
+    public Data LoadJson(Data dataType, string filePath)
     {
         string jsonData = File.ReadAllText(Application.persistentDataPath + filePath);
-        Upgrades passTrough;
-        passTrough = new Upgrades();
-        JsonUtility.FromJsonOverwrite(jsonData, passTrough);
+        JsonUtility.FromJsonOverwrite(jsonData, dataType);
         Debug.Log("Loaded json");
 
-        return (passTrough);
+        return (dataType);
     }
 
-    public void ClearJson (string filePath)
+    public void DeleteJson (string filePath)
     {
-        File.WriteAllText(Application.persistentDataPath + filePath, null);
+        File.Delete(Application.persistentDataPath + filePath);
         Debug.Log("Cleared Json");
     }
 }
