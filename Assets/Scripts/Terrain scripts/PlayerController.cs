@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
         currentFuel = maxFuel;
         fuelBar.maxValue = maxFuel;
         highlightAmount += Mathf.RoundToInt( playerUpgrades.SlideLengthUpgrade.Value);
+        moveSpeed += playerUpgrades.MoveSpeedUpgrade.Value;
 
     }
 

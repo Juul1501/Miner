@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoint: []
-  moveSpeed: 0.12
+  moveSpeed: 0.02
   breakTime: 0.02
   currentFuel: 0
   maxFuel: 100
@@ -930,6 +930,9 @@ MonoBehaviour:
       _value: 0
       _level: 0
     _slideLengthUpgrade:
+      _value: 0
+      _level: 0
+    _moveSpeedUpgrade:
       _value: 0
       _level: 0
   upgradeSavepath: /player.upgrade

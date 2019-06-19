@@ -11,6 +11,9 @@ public class Upgrades : Data
 
     [SerializeField]
     private Upgrade _slideLengthUpgrade;
+
+    [SerializeField]
+    private Upgrade _moveSpeedUpgrade;
     
 
 
@@ -29,5 +32,10 @@ public class Upgrades : Data
     { 
         get => _slideLengthUpgrade; 
         set => _slideLengthUpgrade = value; 
+    }
+    public Upgrade MoveSpeedUpgrade 
+    { 
+        get => _moveSpeedUpgrade; 
+        set => _moveSpeedUpgrade = value; 
     }
 }

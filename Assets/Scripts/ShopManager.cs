@@ -9,6 +9,7 @@ public class ShopManager : MonoBehaviour
     //upgrade Indicators 
     public GameObject[] maxFuelIndicator;
     public GameObject[] slideLengthIndicator;
+    public GameObject[] moveSpeedIndicator;
 
     public Text moneyText;
 
@@ -39,6 +40,12 @@ public class ShopManager : MonoBehaviour
 
         InitiateIndicators();
        
+    }
+
+    public void SpeedButtonPress()
+    {
+        buyUpgrade(upgrades.MoveSpeedUpgrade, 0.02f, 1);
+        InitiateIndicators();
     }
 
     public void FuelButtonPress()
@@ -88,6 +95,16 @@ public class ShopManager : MonoBehaviour
                 slideLengthIndicator[i].GetComponent<Toggle>().isOn = true;
             } else {
                 slideLengthIndicator[i].GetComponent<Toggle>().isOn = false;
+            }
+        }
+
+        moveSpeedIndicator = GameObject.FindGameObjectsWithTag("movespeeddots");
+        for (int i = 0; i < moveSpeedIndicator.Length; i++)
+        {
+            if(i < upgrades.MoveSpeedUpgrade.level){
+                moveSpeedIndicator[i].GetComponent<Toggle>().isOn = true;
+            } else {
+                moveSpeedIndicator[i].GetComponent<Toggle>().isOn = false;
             }
         }
     }
