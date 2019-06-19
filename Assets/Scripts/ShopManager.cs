@@ -20,8 +20,7 @@ public class ShopManager : MonoBehaviour
     
     void Awake()
     {
-        
-        moneyText.text = "monni " + MoneyManager.Instance.money.Amount;
+        moneyText.text = "monni " + MoneyManager.Instance.money.Amount.ToString();
         //Instantiate or load Json File
         jsonLoader = new JsonLoader();
         if(System.IO.File.Exists(Application.persistentDataPath + upgradeSavepath)) 
@@ -43,7 +42,7 @@ public class ShopManager : MonoBehaviour
     }
     public void Update()
     {
-        moneyText.text = "monni " + MoneyManager.Instance.money.Amount;
+        Debug.Log(MoneyManager.Instance.money.Amount.ToString());
     }
 
     public void SpeedButtonPress()

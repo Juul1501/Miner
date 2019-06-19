@@ -18,7 +18,10 @@ public class MoneyManager : MonoBehaviour
 
     private void Awake()
     {
-        money = new Money(0);
+        if (money == null)
+        {
+            money = new Money(0);
+        }
 
         if (instance != null && instance != this)
         {

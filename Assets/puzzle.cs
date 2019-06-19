@@ -13,7 +13,8 @@ public class puzzle : MonoBehaviour
         if(pieces <= snappedPieces)
         {
             Debug.Log("jeeejj je hebt de puzzle af");
-            MoneyManager.Instance.money.Amount = +100;
+            MoneyManager.Instance.money.Amount += 100;
+            Debug.Log(MoneyManager.Instance.money.Amount);
         }
     }
 }
