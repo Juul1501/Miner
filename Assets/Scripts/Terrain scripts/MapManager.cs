@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,24 +23,21 @@ public class MapManager : MonoBehaviour
             return instance;
         }
     }
-
     private void Awake()
     {
-        
+
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
         }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     void Start()
     {
-        map1 = new Map();
-        map1.GenerateMap();
-        InstantiateMap(map1);
+        //createMap();
     }
 
     void InstantiateMap(Map map)
@@ -66,10 +64,21 @@ public class MapManager : MonoBehaviour
                     artifactNum++;
                 }
             }
-        }
+        }        
+    }
 
-
-        
+    //private void Update()
+    //{
+    //    if(map1 == null)
+    //    {
+    //        createMap();
+    //    }
+    //}
+    public void createMap()
+    {
+        map1 = new Map();
+        map1.GenerateMap();
+        InstantiateMap(map1);
     }
 
     public void BackButton ()
@@ -77,4 +86,21 @@ public class MapManager : MonoBehaviour
             SceneManager.LoadScene("MainMenu" );
 
         }
+
+    public void OnEnable()
+    {
+        Debug.Log("OnEnable called");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    public void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    public void OnSceneLoaded(Scene scene, LoadSceneMode scenemode)
+    {
+        if(scene.name == "Mine")
+        {
+            createMap();
+        }
+    }
 }
