@@ -6,7 +6,7 @@ public class puzzle : MonoBehaviour
 {
     public int pieces;
     public int snappedPieces;
-
+    public JsonLoader jsonLoader;
     public void onsnap()
     {
         snappedPieces++;
@@ -15,6 +15,7 @@ public class puzzle : MonoBehaviour
             Debug.Log("jeeejj je hebt de puzzle af");
             MoneyManager.Instance.money.Amount += 100;
             Debug.Log(MoneyManager.Instance.money.Amount);
+            
         }
     }
 }
