@@ -51,6 +51,9 @@ public class PuzzleController : MonoBehaviour
 
     void MovePiece(GameObject piece, Vector3 position)
     {
-        piece.transform.position = position;
+        if (piece.GetComponent<PuzzlePiece>().grabable)
+        {
+            piece.transform.position = position;
+        }
     }
 }

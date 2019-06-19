@@ -5,29 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class SnapZone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public puzzle p;
+    public GameObject correctPiece;
+    private void OnTriggerEnter(Collider piece)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("piece"))
+        if(piece.gameObject == correctPiece)
         {
-            Debug.Log("snap");
-            collision.gameObject.transform.position = transform.position;
-            collision.gameObject.tag = "Player";
+            piece.GetComponent<PuzzlePiece>().grabable = false;
+            piece.gameObject.transform.position = transform.position;
+            Destroy(piece.GetComponent<Rigidbody>());
+            Destroy(piece.GetComponent<Collider>());
+            p.onsnap();
+       
         }
     }
-
-
+    // Start is called before the first frame update
     //dit is echt puur testing verwijder later
 
     public void ChangeScene()

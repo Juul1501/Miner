@@ -41,6 +41,10 @@ public class ShopManager : MonoBehaviour
         InitiateIndicators();
        
     }
+    public void Update()
+    {
+        moneyText.text = "monni " + MoneyManager.Instance.money.Amount;
+    }
 
     public void SpeedButtonPress()
     {
