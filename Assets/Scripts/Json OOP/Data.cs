@@ -1,5 +1,7 @@
-﻿
-public class Data 
+﻿using UnityEngine;
+public class Data : MonoBehaviour
+
+
 {
     
     public Data(){}
