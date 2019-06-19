@@ -4,17 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
 
-public class Inventory : Data
+public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
-    public JsonLoader jsonLoader;
 
     public List<Item> items;
     
 
     void Awake()
     {
-        jsonLoader = new JsonLoader();
         if (instance == null)
         {
             instance = this;
@@ -53,9 +51,5 @@ public class Inventory : Data
             }
         }
     }
-
-
-
-
 }
       

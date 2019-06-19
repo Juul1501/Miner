@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -6,13 +7,11 @@ using System;
 public class ArtifactPiece : Item
 {
     public int ID;
-    //public Sprite artifactSprite;
 
 
-    public ArtifactPiece (string name, int ID /* ,Sprite artifactSprite*/) : base(name)
+    public ArtifactPiece (string name, int ID) : base(name)
     {
         this.ID = ID;
-       // this.artifactSprite = artifactSprite;
     }
 }
 

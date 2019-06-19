@@ -917,7 +917,7 @@ MonoBehaviour:
   breakTime: 0.02
   currentFuel: 0
   maxFuel: 100
-  fuelDecreaseSpeed: 7
+  fuelDecreaseSpeed: 5
   fuelBar: {fileID: 1870309626}
   isMoving: 0
   highlightAmount: 5
