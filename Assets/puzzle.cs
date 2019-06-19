@@ -15,9 +15,7 @@ public class puzzle : MonoBehaviour
             jsonLoader = new JsonLoader();
             Debug.Log("jeeejj je hebt de puzzle af");
 
-            MoneyManager.Instance.money.Amount += 100;
-            jsonLoader.SaveJson(MoneyManager.Instance.money, "/money.cash");
-            Debug.Log(MoneyManager.Instance.money.Amount);
+            MoneyManager.Money += 100;
 
         }
     }

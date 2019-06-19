@@ -6,7 +6,7 @@ public class MoneyManager : MonoBehaviour
 {
 
     public Money money;
-
+    public static int Money;
     private static MoneyManager instance = null;
     public static MoneyManager Instance
     {
