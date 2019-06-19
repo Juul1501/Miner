@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SnapZone : MonoBehaviour
 {
@@ -24,5 +25,13 @@ public class SnapZone : MonoBehaviour
             collision.gameObject.transform.position = transform.position;
             collision.gameObject.tag = "Player";
         }
+    }
+
+
+    //dit is echt puur testing verwijder later
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

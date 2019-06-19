@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MapManager : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class MapManager : MonoBehaviour
     public GameObject[] groundPrefabs;
     public GameObject[] artifactPrefabs;
     public ArtifactGround[] artifacts;
-    public GameObject tempArtifact;
     int artifactNum = 0;
     private static MapManager instance = null;
 
@@ -67,5 +67,14 @@ public class MapManager : MonoBehaviour
                 }
             }
         }
+
+
+        
     }
+
+    public void BackButton ()
+        {
+            SceneManager.LoadScene("MainMenu" );
+
+        }
 }

@@ -14,13 +14,15 @@ public class Map
     {
         ground = new Ground[terrainWidth, terrainHeight];
         groundGameObjects = new GameObject[terrainWidth,terrainHeight];
-        ArtifactPiece artifactItem = new ArtifactPiece("test", 2,2);
+        
         for (int y = 0; y < terrainHeight; y++)
         {
             for (int x = 0; x < terrainWidth; x++ )
             {
                 if (Random.value < spawnPercentage && artifactcount < MapManager.Instance.artifacts.Length)
                 {
+                    ArtifactPiece artifactPiece = new ArtifactPiece("Artifact"+artifactcount,2);
+                    MapManager.Instance.artifacts[artifactcount].artifactPiece = artifactPiece;
                     ground[x, y] = MapManager.Instance.artifacts[artifactcount];
                     ground[x, y].position = new Vector2Int(x, -y);
                     artifactcount++;
