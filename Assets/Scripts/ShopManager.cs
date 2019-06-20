@@ -40,19 +40,26 @@ public class ShopManager : MonoBehaviour
                     upgrades = (Upgrades)d;
                 }
 
-                Data m = jsonLoader.LoadJson(MoneyManager.Instance.money, "/money.cash");
-                if (m is Money)
-                {
-                    MoneyManager.Instance.money = (Money)m;
-                }
-            
-                
-
         } else {
             upgrades = new Upgrades();
             jsonLoader.SaveJson(upgrades,upgradeSavepath);
             Debug.Log("created new json");
         }
+
+         if(System.IO.File.Exists(Application.persistentDataPath + "/money.cash")) 
+        {
+
+                Data m = jsonLoader.LoadJson(MoneyManager.Instance.money, "/money.cash");
+                if (m is Money)
+                {
+                    MoneyManager.Instance.money = (Money)m;
+                }
+        } else {
+            MoneyManager.Instance.money = new Money(0);
+            jsonLoader.SaveJson(MoneyManager.Instance.money,"/money.cash");
+            Debug.Log("created new json");
+        }
+        
 
         upgrades.MaxFuelUpgrade.Price = 150;
         upgrades.MoveSpeedUpgrade.Price = 200;
