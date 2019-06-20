@@ -8,11 +8,11 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 0
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: hotpotato
+  companyName: s
   productName: Paper Miner
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -56,9 +56,9 @@ PlayerSettings:
   displayResolutionDialog: 1
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 1
-  allowedAutorotateToPortraitUpsideDown: 0
-  allowedAutorotateToLandscapeRight: 0
-  allowedAutorotateToLandscapeLeft: 0
+  allowedAutorotateToPortraitUpsideDown: 1
+  allowedAutorotateToLandscapeRight: 1
+  allowedAutorotateToLandscapeLeft: 1
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
   preserveFramebufferAlpha: 0
@@ -113,7 +113,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
+  bundleVersion: 
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -236,8 +236,8 @@ PlayerSettings:
   templatePackageId: com.unity.template.3d@1.0.4
   templateDefaultScene: Assets/Scenes/SampleScene.unity
   AndroidTargetArchitectures: 5
-  AndroidSplashScreenScale: 0
-  androidSplashScreen: {fileID: 0}
+  AndroidSplashScreenScale: 2
+  androidSplashScreen: {fileID: 2800000, guid: 80e3d737ec4b8474c95a1c8e7d3b4961, type: 3}
   AndroidKeystoreName: 
   AndroidKeyaliasName: 
   AndroidBuildApkPerCpuArchitecture: 0
@@ -256,7 +256,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: dd2563090f86ee14fbe36d2d7c359b61, type: 3}
+      m_Icon: {fileID: 2800000, guid: 88ed0bd36a7293e4abdd3a4bd5a5199a, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
