@@ -83,7 +83,7 @@ public class ShopManager : MonoBehaviour
         if  (panelCounter == 1)
         {
             upgradePanel[1].SetActive(true);
-            upgradePriceText.text = "$ " + upgrades.FuelSpeedUpgrade.Price;
+            upgradePriceText.text = "$ " + upgrades.MaxFuelUpgrade.Price;
         } else {
             upgradePanel[1].SetActive(false);
         }
