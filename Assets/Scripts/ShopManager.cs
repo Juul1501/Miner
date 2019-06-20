@@ -66,6 +66,7 @@ public class ShopManager : MonoBehaviour
 
     void Update() {
         moneyText.text = "" + MoneyManager.Instance.money.Amount;
+        CheckPanels();
     }
 
 
