@@ -13,8 +13,15 @@ public class puzzle : MonoBehaviour
         if(pieces <= snappedPieces)
         {
             jsonLoader = new JsonLoader();
-            Debug.Log("jeeejj je hebt de puzzle af");
+            Data m = jsonLoader.LoadJson(MoneyManager.Instance.money ,"/money.cash");
+                if (m is Money)
+                {
+                    MoneyManager.Instance.money = (Money)m;
+                }
 
+            //MoneyManager.Instance.money.Amount = 
+
+            Debug.Log("jeeejj je hebt de puzzle af");
             MoneyManager.Instance.money.Amount += 100;
             jsonLoader.SaveJson(MoneyManager.Instance.money, "/money.cash");
             Debug.Log(MoneyManager.Instance.money.Amount);

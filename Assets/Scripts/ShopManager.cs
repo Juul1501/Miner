@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +9,17 @@ public class ShopManager : MonoBehaviour
     public GameObject[] slideLengthIndicator;
     public GameObject[] moveSpeedIndicator;
 
+    public GameObject[] upgradePanel;
+    public int panelCounter;
+
+
+    public Sprite[] speedSprites;
+    public Sprite[] fuelSprites;
+
+    public GameObject[] spriteItem;
+
     public Text moneyText;
+    public Text upgradePriceText;
 
     public string upgradeSavepath;
     public Upgrades upgrades;
@@ -20,8 +28,8 @@ public class ShopManager : MonoBehaviour
     
     void Awake()
     {
-        
-        moneyText.text = "monni " + MoneyManager.Instance.money.Amount;
+        CheckPanels();
+
         //Instantiate or load Json File
         jsonLoader = new JsonLoader();
         if(System.IO.File.Exists(Application.persistentDataPath + upgradeSavepath)) 
@@ -32,19 +40,67 @@ public class ShopManager : MonoBehaviour
                     upgrades = (Upgrades)d;
                 }
 
+                Data m = jsonLoader.LoadJson(MoneyManager.Instance.money, "/money.cash");
+                if (m is Money)
+                {
+                    MoneyManager.Instance.money = (Money)m;
+                }
+            
+                
+
         } else {
             upgrades = new Upgrades();
             jsonLoader.SaveJson(upgrades,upgradeSavepath);
             Debug.Log("created new json");
         }
 
+        upgrades.MaxFuelUpgrade.Price = 150;
+        upgrades.MoveSpeedUpgrade.Price = 200;
+        upgrades.SlideLengthUpgrade.Price = 100;
+        upgradePriceText.text = "$ " + upgrades.MoveSpeedUpgrade.Price;
+
+
         InitiateIndicators();
-       
+        Debug.Log(MoneyManager.Instance.money.Amount);
     }
-    public void Update()
+
+    void Update() {
+        moneyText.text = "" + MoneyManager.Instance.money.Amount;
+    }
+
+
+    public void CheckPanels()
     {
-        moneyText.text = "monni " + MoneyManager.Instance.money.Amount;
+        if  (panelCounter == 0)
+        {
+            upgradePanel[0].SetActive(true);
+            upgradePriceText.text = "$ " + upgrades.MoveSpeedUpgrade.Price;
+        } else {
+            upgradePanel[0].SetActive(false);
+        }
+
+        if  (panelCounter == 1)
+        {
+            upgradePanel[1].SetActive(true);
+            upgradePriceText.text = "$ " + upgrades.FuelSpeedUpgrade.Price;
+        } else {
+            upgradePanel[1].SetActive(false);
+        }
     }
+
+    public void SwitchPanelOnPress(string direction)
+    {
+        if (direction == "right" && panelCounter < 2)
+        {
+            panelCounter ++;
+        } else if (direction == "left" && panelCounter > 0) {
+            panelCounter --;
+        }
+        CheckPanels();
+        InitiateIndicators();
+    }
+
+
 
     public void SpeedButtonPress()
     {
@@ -66,11 +122,13 @@ public class ShopManager : MonoBehaviour
     
     public void buyUpgrade (Upgrade upgradeType, float upgradeValue, int upgradeLevel)
     {
-       if(upgradeType.level < 5)
+       if(upgradeType.level < 5 && MoneyManager.Instance.money.Amount >= upgradeType.Price)
        {
             upgradeType.Value += upgradeValue;
             upgradeType.level += upgradeLevel;
+            MoneyManager.Instance.money.Amount -= upgradeType.Price;
             jsonLoader.SaveJson(upgrades,upgradeSavepath);
+            jsonLoader.SaveJson(MoneyManager.Instance.money,"/money.cash");
        }
     }
 
@@ -87,6 +145,7 @@ public class ShopManager : MonoBehaviour
         {
             if(i < upgrades.MaxFuelUpgrade.level){
                 maxFuelIndicator[i].GetComponent<Toggle>().isOn = true;
+                spriteItem[0].GetComponent<Image>().sprite = fuelSprites[i];
             } else {
                 maxFuelIndicator[i].GetComponent<Toggle>().isOn = false;
             }
@@ -107,6 +166,7 @@ public class ShopManager : MonoBehaviour
         {
             if(i < upgrades.MoveSpeedUpgrade.level){
                 moveSpeedIndicator[i].GetComponent<Toggle>().isOn = true;
+                spriteItem[1].GetComponent<Image>().sprite = speedSprites[i];
             } else {
                 moveSpeedIndicator[i].GetComponent<Toggle>().isOn = false;
             }
